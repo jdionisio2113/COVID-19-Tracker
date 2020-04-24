@@ -20,9 +20,12 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "css-loader": "^3.5.2",
     "html-webpack-plugin": "^4.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "style-loader": "^1.1.4",
+    "url-loader": "^4.1.0",
     "webpack-dev-server": "^3.10.3"
   }
 }
