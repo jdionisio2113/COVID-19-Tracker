@@ -1,13 +1,19 @@
 import React from 'react';
 
 function CountryPicker(props) {
-    var { countriesData } = props
+    var { countriesData, handleCountryChange, fetchCovidData } = props
 
     return (
         <div>
             <div className="country-selector">
-                <select>
-                    <option>Global</option>
+                <select defaultValue="" onChange={(e) => {
+                    if (e.target.value !== "Global") {
+                        handleCountryChange(e.target.value)
+                    } else {
+                        fetchCovidData()
+                    }
+                }}>
+                    <option value="Global">Global</option>
                     {countriesData.map((country, i) => {
                         return (
                             <option key={i} value={country.name}>{country.name}</option>

@@ -13,10 +13,12 @@ class App extends React.Component {
 
         this.state = {
             globalData: [],
-            countriesData: []
+            countriesData: [],
+            country: ''
         }
 
         this.fetchCovidData = this.fetchCovidData.bind(this);
+        this.handleCountryChange = this.handleCountryChange.bind(this);
     }
 
     componentDidMount() {
@@ -25,16 +27,37 @@ class App extends React.Component {
 
     }
 
+    handleCountryChange(country) {
 
-    fetchCovidData() {
+        if (country) {
+            api.get(`/countries/${country}`).then(country => {
+                console.log(country.data)
+
+                this.setState({
+                    globalData: country.data
+                })
+            })
+        } else {
+            this.fetchCovidData()
+        }
+
+    }
+
+
+    fetchCovidData(country) {
+
+        // let changeableUrl = api
+
+        // if (country) {
+        //     changeableUrl = `${api}/countries/${country}`
+        // }
+
+        // axios.get(changeableUrl)
 
         all([api.get(), api.get("/countries")]).then(
             response => {
                 var globalCount = response[0].data;
                 var countries = response[1].data.countries;
-
-                console.log(globalCount);
-                console.log(countries)
 
                 this.setState({
                     globalData: globalCount,
@@ -45,14 +68,14 @@ class App extends React.Component {
         )
     }
 
+
     render() {
         const { globalData, countriesData } = this.state
         return (
             <div>
                 <h1 className="covid-title">C<i className="fas fa-biohazard"></i>VID-19</h1>
-                <CountryPicker countriesData={countriesData} />
+                <CountryPicker countriesData={countriesData} handleCountryChange={this.handleCountryChange} fetchCovidData={this.fetchCovidData} />
                 <Cards globalData={globalData} />
-                <Chart />
             </div >
         )
     }

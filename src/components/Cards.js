@@ -9,8 +9,7 @@ function Cards({ globalData: { confirmed, recovered, deaths, lastUpdate } }) {
     var infected = confirmed.value.toLocaleString();
     var recovered = recovered.value.toLocaleString();
     var deaths = deaths.value.toLocaleString();
-    // var { data } = props
-    // console.log(data)
+
     return (
         <div className="card-container">
             <div className="confirmed_card">
