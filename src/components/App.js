@@ -4,7 +4,7 @@ import axios from 'axios';
 import { all, get } from "axios";
 import Cards from "./Cards";
 import Chart from "./Chart";
-import CountryPicker from "./CountryPicker";
+import CountrySelector from "./CountrySelector";
 
 class App extends React.Component {
 
@@ -12,9 +12,10 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            globalData: [],
+            covidData: [],
             countriesData: [],
-            dailyData: []
+            dailyData: [],
+            country: ''
         }
 
         this.fetchCovidData = this.fetchCovidData.bind(this);
@@ -30,27 +31,24 @@ class App extends React.Component {
     handleCountryChange(country) {
 
         if (country) {
+            var countryName = country;
             api.get(`/countries/${country}`).then(country => {
-                // console.log(country.data)
 
                 this.setState({
-                    globalData: country.data
+                    covidData: country.data,
+                    country: countryName
                 })
+
             })
+        }
+        else {
+            this.fetchCovidData()
         }
 
     }
 
 
-    fetchCovidData(country) {
-
-        // let changeableUrl = api
-
-        // if (country) {
-        //     changeableUrl = `${api}/countries/${country}`
-        // }
-
-        // axios.get(changeableUrl)
+    fetchCovidData() {
 
         all([api.get(), api.get("/countries"), api.get("/daily")]).then(
             response => {
@@ -67,12 +65,13 @@ class App extends React.Component {
 
                 // console.log(globalCount)
                 // console.log(countries)
-                // console.log(dailyData)
+                // console.log(modifiedDailyData)
 
                 this.setState({
-                    globalData: globalCount,
+                    covidData: globalCount,
                     countriesData: countries,
-                    dailyData: modifiedDailyData
+                    dailyData: modifiedDailyData,
+                    country: ''
                 })
 
             }
@@ -81,13 +80,13 @@ class App extends React.Component {
 
 
     render() {
-        const { globalData, countriesData, dailyData } = this.state
+        const { covidData, countriesData, dailyData, country } = this.state
         return (
             <div>
                 <h1 className="covid-title">C<i className="fas fa-biohazard"></i>VID-19</h1>
-                <CountryPicker countriesData={countriesData} handleCountryChange={this.handleCountryChange} fetchCovidData={this.fetchCovidData} />
-                <Cards globalData={globalData} />
-                <Chart handleCountryChange={this.handleCountryChange} globalData={globalData} countriesData={countriesData} dailyData={dailyData} />
+                <CountrySelector covidData={covidData} countriesData={countriesData} handleCountryChange={this.handleCountryChange} fetchCovidData={this.fetchCovidData} />
+                <Cards covidData={covidData} />
+                <Chart covidData={covidData} dailyData={dailyData} country={country} />
             </div >
         )
     }

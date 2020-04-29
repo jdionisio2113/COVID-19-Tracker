@@ -2,7 +2,28 @@ import React from 'react';
 import { Line, Bar } from 'react-chartjs-2';
 
 function Chart(props) {
-    var { dailyData } = props;
+    var { dailyData, covidData, country } = props;
+
+    const barChart = (
+        covidData.confirmed ? (
+            <Bar
+                data={{
+                    labels: ['Infected', 'Recovered', 'Deaths'],
+                    datasets: [
+                        {
+                            label: 'People',
+                            backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+                            data: [covidData.confirmed.value, covidData.recovered.value, covidData.deaths.value],
+                        },
+                    ],
+                }}
+                options={{
+                    legend: { display: false },
+                    title: { display: true, text: `Current state in ${country}` },
+                }}
+            />
+        ) : null
+    );
 
     const lineChart = dailyData.length ? (<div className="chart">
         <Line
@@ -29,9 +50,10 @@ function Chart(props) {
         />
     </div>) : null
 
+    // var x = document.getElementById("global").selected = "true"
     return (
         <div className="line-chart">
-            {lineChart}
+            {country ? barChart : lineChart}
         </div>
 
     )

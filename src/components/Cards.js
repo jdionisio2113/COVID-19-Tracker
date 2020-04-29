@@ -1,7 +1,7 @@
 import React from 'react';
 import truncateString from '../utils/truncateString';
 
-function Cards({ globalData: { confirmed, recovered, deaths, lastUpdate } }) {
+function Cards({ covidData: { confirmed, recovered, deaths, lastUpdate } }) {
     if (!confirmed) {
         return 'Loading...'
     }
