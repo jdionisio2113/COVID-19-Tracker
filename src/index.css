@@ -65,3 +65,10 @@ body {
 .country-selector select{
     width: 40%;
 }
+
+/* =================== CHART.JS ==================== */
+
+.line-chart {
+    width: 90%;
+    margin: 20px auto;
+}
