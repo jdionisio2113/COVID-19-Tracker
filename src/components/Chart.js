@@ -5,7 +5,7 @@ function Chart(props) {
     var { dailyData, covidData, country } = props;
 
     const barChart = (
-        covidData.confirmed ? (
+        covidData.confirmed ? (<div className="bar-chart">
             <Bar
                 data={{
                     labels: ['Infected', 'Recovered', 'Deaths'],
@@ -17,15 +17,18 @@ function Chart(props) {
                         },
                     ],
                 }}
+                // width={800}
+                // height={800}
                 options={{
                     legend: { display: false },
                     title: { display: true, text: `Current state in ${country}` },
                 }}
             />
+        </div>
         ) : null
     );
 
-    const lineChart = dailyData.length ? (<div className="chart">
+    const lineChart = dailyData.length ? (<div className="line-chart">
         <Line
             data={{
                 labels: dailyData.map(({ date }) => date),
@@ -52,7 +55,7 @@ function Chart(props) {
 
     // var x = document.getElementById("global").selected = "true"
     return (
-        <div className="line-chart">
+        <div className="chart-container">
             {country ? barChart : lineChart}
         </div>
 
