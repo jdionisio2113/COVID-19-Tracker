@@ -9,6 +9,10 @@ body {
     font-family: "Noto Sans", open-sans;
 }
 
+select {
+    outline: none;
+}
+
 .fa-biohazard {
     color: rgb(53, 223, 186);
 }
