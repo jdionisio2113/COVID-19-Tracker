@@ -1,108 +1,118 @@
 * {
-    box-sizing: border-box;
-  min-height: 0;
-  min-width: 0;
+	box-sizing: border-box;
+	min-height: 0;
+	min-width: 0;
 }
 
 body {
-    background-color:#f8f8ff;
-    font-family: "Noto Sans", open-sans;
+	background-color: #f8f8ff;
+	font-family: "Noto Sans", open-sans;
 }
 
 select {
-    outline: none;
+	outline: none;
+}
+
+.loading {
+	text-align: center;
 }
 
 .fa-biohazard {
-    color: rgb(53, 223, 186);
+	color: rgb(53, 223, 186);
 }
 
 .covid-title {
-    font-size: 4em;
-    text-align: center;
+	font-size: 4em;
+	text-align: center;
 }
 
-.card-container{
-    text-align: center;
+.card-container {
+	text-align: center;
 }
 
 .card-container h2 {
-    font-size: 2em;
-    margin: 5px 0;
+	font-size: 2em;
+	margin: 5px 0;
 }
 
 .infected_value {
-    color: rgb(75, 99, 238);
+	color: rgb(75, 99, 238);
 }
 
 .recovered_value {
-    color: rgb(4, 153, 4);
+	color: rgb(4, 153, 4);
 }
 
 .deaths_value {
-    color: rgb(180, 6, 6);
+	color: rgb(180, 6, 6);
 }
 
-.infected_value, .recovered_value, .deaths_value {
-    font-weight: bold;
-    font-size: 1.2em;
+.infected_value,
+.recovered_value,
+.deaths_value {
+	font-weight: bold;
+	font-size: 1.2em;
 }
 
-.info_date{
-    color: rgb(102, 102, 102);
-    font-size: 14px;
+.info_date {
+	color: rgb(102, 102, 102);
+	font-size: 14px;
 }
 
-.confirmed_card, .recovered_card, .death_card  {
-    border-radius: 5px;
-    box-shadow: 0px 5px 19px 0px lightgrey;
-    width: 85%;
-    margin: 2em auto;
-    padding: 3px;
+.confirmed_card,
+.recovered_card,
+.death_card {
+	border-radius: 5px;
+	box-shadow: 0px 5px 19px 0px lightgrey;
+	width: 85%;
+	margin: 2em auto;
+	padding: 3px;
 }
 
 /* =================== COUNTRYSELECTOR.JS ==================== */
 
 .country-selector {
-    text-align: center;
+	text-align: center;
 }
 
-.country-selector select{
-    width: 40%;
+.country-selector select {
+	width: 40%;
 }
 
 /* =================== CHART.JS ==================== */
 
 .chart-container {
-    width: 90%;
-    margin: 20px auto;
+	width: 90%;
+	margin: 20px auto;
 }
 
 @media screen and (min-width: 1100px) {
-    .covid-title {
-        font-size: 6em;
-        margin-bottom: .3em;
-    }
+	.covid-title {
+		font-size: 6em;
+		margin-bottom: .3em;
+	}
 
-    .country-selector select{
-        width: 20%;
-        margin: 1em 0;
-    } 
+	.country-selector select {
+		width: 20%;
+		margin: 1em 0;
+	}
 
-    .card-container {
-        display: flex;
-        justify-content: space-evenly;
-        margin: 0.3em 2em;
-    }
+	.card-container {
+		display: flex;
+		justify-content: space-evenly;
+		margin: 0.3em 2em;
+	}
 
-    .confirmed_card, .recovered_card, .death_card {
-        margin: 2em 1em;
-        padding: 1.5em 0;
-    }
+	.confirmed_card,
+	.recovered_card,
+	.death_card {
+		margin: 2em 1em;
+		padding: 1.5em 0;
+	}
 
-    .bar-chart {
-        width: 70%;
-        height: 50%;
-        margin: 0 auto; 
-    }
+	.bar-chart {
+		width: 70%;
+		height: 50%;
+		margin: 0 auto;
+	}
 }
