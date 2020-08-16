@@ -6,4 +6,4 @@
 * CSS
 ## About
 **Users can**
-- keep updated daily for COVID-19 numbers in countries
+- view a live count of COVID-19 of sick, recovered, and deaths on a graph for a country they select
